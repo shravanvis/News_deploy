@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-input placeholder="Search here" clearInput [(ngModel)]="searchTerm"></ion-input>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/search-news" (click)="runTimeChange(searchTerm)">
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+  <ion-refresher slot="fixed" 
+  (ionRefresh)="doRefresh($event)" >
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <ion-slides>
+    <ion-slide *ngFor="let item of news?.articles">
+      <ion-card>
+        <img src="{{item.urlToImage}}" style="background-color:grey" />
+        <ion-card-header>
+          <ion-card-title>{{item.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content style="text-align: left;">
+          <b>Description :</b> {{item.description}}
+          <br><br>
+          <b>Content :</b> {{item.content}}
+          <br>
+          <div style="text-align: center;">
+            <a mat-stroked-button href="{{item.url}}">Read More</a>
+          </div>
+        </ion-card-content>
+        <ion-card-content style="background-color: rgb(201, 201, 201);">
+
+          <div style="line-height: 0.5">
+            <p style="font-size: 12px;"><b> Source Name : </b> {{item.source.name}}</p>
+            <p style="font-size: 12px;"><b> Published At : </b> {{item.publishedAt}}</p>
+          </div>      
+        </ion-card-content>
+  
+        <ion-item style="text-align: center;" color="dark">
+          <ion-icon class="icon" name="chevron-back"></ion-icon> 
+          <span class="text">swipe left for more news</span>
+        </ion-item>
+
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

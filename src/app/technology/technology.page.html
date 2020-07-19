@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Technology</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openDiscover()">
+        <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" 
+  (ionRefresh)="doRefresh($event)" >
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+
+
+  
+  <ion-slides>
+    <ion-slide *ngFor="let technology of mTechnology">
+      <ion-card>
+        <img src="{{technology.urlToImage}}" style="background-color:grey" />
+        <ion-card-header>
+          <ion-card-title>{{technology.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content style="text-align: left;">
+          <b>Description :</b> {{technology.description}}
+          <br><br>
+          <b>Content :</b> {{technology.content}}
+          <br>
+          <div style="text-align: center;">
+            <a mat-stroked-button href="{{technology.url}}">Read More</a>
+          </div>
+        </ion-card-content>
+        <ion-card-content style="background-color: rgb(201, 201, 201);">
+
+          <div style="line-height: 0.5">
+            <p style="font-size: 12px;"><b> Source Name : </b> {{technology.source.name}}</p>
+            <p style="font-size: 12px;"><b> Published At : </b> {{technology.publishedAt}}</p>
+          </div>      
+        </ion-card-content>
+  
+        <ion-item style="text-align: center;" color="dark">
+          <ion-icon class="icon" name="chevron-back"></ion-icon> 
+          <span class="text">swipe left for more news</span>
+        </ion-item>
+              
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

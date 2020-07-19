@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title style="text-align: center;">Top Headlines</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openDiscover()">
+        <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" 
+  (ionRefresh)="doRefresh($event)" >
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+
+
+  
+  <ion-slides>
+    <ion-slide *ngFor="let topheadlinesfromindia of mTopHeadlinesFromIndia">
+      <ion-card>
+        <img src="{{topheadlinesfromindia.urlToImage}}" style="background-color:grey" />
+        <ion-card-header>
+          <ion-card-title>{{topheadlinesfromindia.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content style="text-align: left;">
+          <b>Description :</b> {{topheadlinesfromindia.description}}
+          <br><br>
+          <b>Content :</b> {{topheadlinesfromindia.content}}
+          <br>
+          <div style="text-align: center;">
+            <a mat-stroked-button href="{{topheadlinesfromindia.url}}">Read More</a>
+          </div>
+        </ion-card-content>
+        
+      <ion-card-content style="background-color: rgb(201, 201, 201);">
+
+        <div style="line-height: 0.5">
+          <p style="font-size: 12px;"><b> Source Name : </b> {{topheadlinesfromindia.source.name}}</p>
+          <p style="font-size: 12px;"><b> Published At : </b> {{topheadlinesfromindia.publishedAt}}</p>
+        </div>      
+      </ion-card-content>
+
+      <ion-item style="text-align: center;" color="dark">
+        <ion-icon class="icon" name="chevron-back"></ion-icon> 
+        <span class="text">swipe left for more news</span>
+      </ion-item>
+      
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

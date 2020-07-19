@@ -1,0 +1,86 @@
+<ion-content>
+
+  <ion-item lines="none">
+    <p style="color: #173F58; font-weight: 600; font-size: 20px; padding: 10px 0 0 80px;">Suggested Topics</p>
+    <ion-buttons slot="end">
+      <ion-button (click)="CloseNotification()">
+        <ion-icon name="close-outline" style="zoom: 1.5;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+
+
+<ion-grid>
+  <ion-row>
+    <ion-col>
+      <ion-card routerLink="/india" (click)="CloseNotification()">
+        <img src="assets/india.jpg" style="width: 100%; height: 100px;" />
+        <ion-card-header style="background-color: #dfb464; height: 30px;">
+          <p style="margin-top: -10px; text-align: center; color: white;">India</p>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card routerLink="/politics" (click)="CloseNotification()">
+        <img src="assets/politics.jpg" style="width: 100%; height: 100px;" />
+        <ion-card-header style="background-color: #000000; height: 30px;">
+          <p style="margin-top: -10px; text-align: center; color: white;">Politics</p>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-card routerLink="/automobiles" (click)="CloseNotification()">
+        <img src="assets/automobiles.jpg" style="width: 100%; height: 100px;" />
+        <ion-card-header style="background-color: #016a70; height: 30px;">
+          <p style="margin-top: -10px; text-align: center; color: white;">Automobiles</p>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card routerLink="/fashion" (click)="CloseNotification()">
+        <img src="assets/fashion.jpg" style="width: 100%; height: 100px;" />
+        <ion-card-header style="background-color: #8a8a8a; height: 30px;">
+          <p style="margin-top: -10px; text-align: center; color: white;">Fashion</p>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-card routerLink="/travel" (click)="CloseNotification()">
+        <img src="assets/travel.jpeg" style="width: 100%; height: 100px;" />
+        <ion-card-header style="background-color: #74a8c8; height: 30px;">
+          <p style="margin-top: -10px; text-align: center; color: white;">Travel</p>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card routerLink="/caa" (click)="CloseNotification()">
+        <img src="assets/CAA.jpg" style="width: 100%; height: 100px;" />
+        <ion-card-header style="background-color: #d31145; height: 30px;">
+          <p style="margin-top: -10px; text-align: center; color: white;">CAA</p>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+      <ion-card routerLink="/startups" (click)="CloseNotification()">
+        <img src="assets/startups.jpg" style="width: 100%; height: 100px;" />
+        <ion-card-header style="background-color: #32c0d6; height: 30px;">
+          <p style="margin-top: -10px; text-align: center; color: white;">Startups</p>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+
+    </ion-col>
+  </ion-row>
+  
+</ion-grid>
+</ion-content>

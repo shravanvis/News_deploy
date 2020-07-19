@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="back()">
+        <ion-icon name="arrow-back-outline" style="color: white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title style="text-align: center; color: white;">CAA</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="openDiscover()">
+        <ion-icon name="ellipsis-horizontal-outline" style="color: white;"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- <div *ngFor="let health of mHealth">
+    <h2>{{health.source.name}}</h2>
+    <h2>{{health.title}}</h2>
+    <img src="{{health.urlToImage}}" alt="">
+    <h6>{{health.publishedAt}}</h6>
+  </div> -->
+
+
+  <ion-refresher slot="fixed" 
+  (ionRefresh)="doRefresh($event)" >
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+
+
+  
+  <ion-slides>
+    <ion-slide *ngFor="let caa of mCAA">
+      <ion-card>
+        <img src="{{caa.urlToImage}}" style="background-color:grey" />
+        <ion-card-header>
+          <ion-card-title>{{caa.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content style="text-align: left;">
+          <b>Description :</b> {{caa.description}}
+          <br><br>
+          <b>Content :</b> {{caa.content}}
+          <br>
+          <div style="text-align: center;">
+            <a mat-stroked-button href="{{caa.url}}">Read More</a>
+          </div>
+        </ion-card-content>
+        <ion-card-content style="background-color: rgb(201, 201, 201);">
+
+          <div style="line-height: 0.5">
+            <p style="font-size: 12px;"><b> Source Name : </b> {{caa.source.name}}</p>
+            <p style="font-size: 12px;"><b> Published At : </b> {{caa.publishedAt}}</p>
+          </div>      
+        </ion-card-content>
+  
+        <ion-item style="text-align: center;" color="dark">
+          <ion-icon class="icon" name="chevron-back"></ion-icon> 
+          <span class="text">swipe left for more news</span>
+        </ion-item>
+
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+
+</ion-content>

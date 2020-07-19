@@ -1,0 +1,82 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>News</ion-title>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/search-news">
+        <ion-icon name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <div style="text-align: center; padding-top: 10px; background-color: aquamarine;">
+    <mat-form-field>
+      <mat-label>Select News Channel</mat-label>
+      <mat-select name="source">
+        <mat-option *ngFor="let source of mSources" [value]="source" (click)="searchArticles(source.id)">
+          {{source.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  
+</ion-header>
+
+<ion-content>
+
+
+  <ion-refresher slot="fixed" 
+  (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+  
+  
+  
+      <ion-card *ngFor="let article of mArticles">
+        <img src="{{article.urlToImage}}" style="background-color:grey" />
+        <ion-card-header>
+          <ion-card-title>{{article.title}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content style="text-align: left;">
+          <b>Description :</b> {{article.description}}
+          <br><br>
+          <b>Content :</b> {{article.content}}
+          <br>
+          <div style="text-align: center;">
+            <button style="border-radius: 20px;" mat-raised-button color="warn"> Read More <a href="{{article.url}}"></a></button>
+          </div>
+        </ion-card-content>
+        <ion-card-content style="background-color: rgb(201, 201, 201);">
+
+          <div style="line-height: 0.5">
+            <p style="font-size: 12px;"><b> Source Name : </b> {{article.source.name}}</p>
+            <p style="font-size: 12px;"><b> Published At : </b> {{article.publishedAt}}</p>
+          </div>      
+        </ion-card-content>
+  
+        <!-- <ion-item style="text-align: center;">
+          <ion-icon class="icon" name="chevron-back"></ion-icon> 
+          <span class="text">swipe left for more news</span>
+        </ion-item> -->
+
+      </ion-card>
+
+
+  
+
+  <!-- <mat-list-item class="list-item" *ngFor="let source of mSources" (click)="searchArticles(source.id);sidenav.close();">
+
+    <div mat-card-avatar [ngStyle]="{'background-image': 'url(../assets/images/'+ source.id +'.png)'}" class="example-header-image"></div>
+
+    <span class="source-name"> {{source.name}}</span>
+</mat-list-item> -->
+</ion-content>
